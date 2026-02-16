@@ -299,4 +299,146 @@ function renderFAQ() {
     wrap.className = "faqItem";
     wrap.innerHTML = `
       <div class="faqQ">
-        <spa
+        <span>${escapeHtml(item.q)}</span>
+        <span>▾</span>
+      </div>
+      <div class="faqA">${escapeHtml(item.a)}</div>
+    `;
+    wrap.querySelector(".faqQ").addEventListener("click", () => {
+      wrap.classList.toggle("open");
+    });
+    box.appendChild(wrap);
+  });
+
+  els.content.appendChild(box);
+}
+
+function renderContact() {
+  els.statCount.textContent = "—";
+  const box = document.createElement("div");
+  box.className = "sectionCard";
+  box.innerHTML = `
+    <h3 class="sectionTitle">Contact</h3>
+    <p class="small">Mets tes liens ici (tu les changeras quand tu veux).</p>
+
+    <div style="margin-top:12px; display:grid; gap:10px;">
+      <div class="faqItem">
+        <div class="faqQ" style="cursor:default;">
+          <span>Discord</span>
+          <span class="pill">ton_discord</span>
+        </div>
+      </div>
+
+      <div class="faqItem">
+        <div class="faqQ" style="cursor:default;">
+          <span>Instagram</span>
+          <span class="pill">@ton_insta</span>
+        </div>
+      </div>
+
+      <div class="faqItem">
+        <div class="faqQ" style="cursor:default;">
+          <span>TikTok</span>
+          <span class="pill">@ton_tiktok</span>
+        </div>
+      </div>
+
+      <div class="faqItem">
+        <div class="faqQ" style="cursor:default;">
+          <span>Snap</span>
+          <span class="pill">ton_snap</span>
+        </div>
+      </div>
+    </div>
+  `;
+  els.content.appendChild(box);
+}
+
+function render() {
+  setActiveNav();
+
+  // reset content
+  els.content.innerHTML = "";
+
+  // Search always visible, but we can adapt placeholder
+  els.search.value = state.query;
+
+  if (state.route === "home") {
+    els.pageTitle.textContent = "Recommandations";
+    els.pageSubtitle.textContent = "Scroll et découvre des jeux Roblox 👇";
+    renderChips("home");
+    renderGamesList(GAMES);
+  }
+
+  if (state.route === "categories") {
+    els.pageTitle.textContent = "Catégories";
+    els.pageSubtitle.textContent = "Choisis une catégorie, puis découvre les jeux 🧭";
+    renderChips("categories");
+
+    els.statCount.textContent = "—";
+    const box = document.createElement("div");
+    box.className = "sectionCard";
+    box.innerHTML = `
+      <h3 class="sectionTitle">Choisis une catégorie</h3>
+      <p class="small">Clique sur une puce au-dessus (Horreur, Anomalie, Fun, Hobby, Brain rot).</p>
+    `;
+    els.content.appendChild(box);
+  }
+
+  if (state.route === "category") {
+    const current = CATEGORIES.find(c => c.key === state.category);
+    els.pageTitle.textContent = current ? current.label : "Catégorie";
+    els.pageSubtitle.textContent = "Scroll et clique un jeu pour l’ouvrir sur Roblox ✨";
+    renderChips("category");
+    renderGamesList(GAMES);
+  }
+
+  if (state.route === "faq") {
+    els.pageTitle.textContent = "FAQ";
+    els.pageSubtitle.textContent = "Questions / réponses — tu modifies ça quand tu veux 🧠";
+    renderChips(null);
+    renderFAQ();
+  }
+
+  if (state.route === "contact") {
+    els.pageTitle.textContent = "Contact";
+    els.pageSubtitle.textContent = "Tes réseaux (Discord, Insta, TikTok…) 📩";
+    renderChips(null);
+    renderContact();
+  }
+}
+
+// ============ Utils ============
+
+function escapeHtml(s){
+  return String(s)
+    .replaceAll("&","&amp;")
+    .replaceAll("<","&lt;")
+    .replaceAll(">","&gt;")
+    .replaceAll('"',"&quot;")
+    .replaceAll("'","&#039;");
+}
+function escapeAttr(s){
+  // pour éviter de casser le style="url('...')"
+  return String(s).replaceAll("'", "%27");
+}
+
+// ============ Events ============
+
+window.addEventListener("hashchange", navigateFromHash);
+
+els.search.addEventListener("input", () => {
+  state.query = els.search.value;
+  render();
+});
+
+els.goHome.addEventListener("click", () => { location.hash = "#home"; });
+els.goHome.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" || e.key === " ") location.hash = "#home";
+});
+
+document.getElementById("year").textContent = String(new Date().getFullYear());
+
+// init
+if (!location.hash) location.hash = "#home";
+navigateFromHash();
