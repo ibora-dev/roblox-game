@@ -485,34 +485,34 @@ function renderContact() {
   box.className = "sectionCard";
   box.innerHTML = `
     <h3 class="sectionTitle">Contact</h3>
-    <p class="small">Remplace ces infos par les tiennes (Discord, Insta, TikTok, Snap…).</p>
+    <p class="small">Contactez moi bande de ptit filou je me sens seul.</p>
 
     <div style="margin-top:12px; display:grid; gap:10px;">
       <div class="faqItem">
         <div class="faqQ" style="cursor:default;">
           <span>Discord</span>
-          <span class="pill">ton_discord</span>
+          <span class="pill">ibora_v6</span>
         </div>
       </div>
 
       <div class="faqItem">
         <div class="faqQ" style="cursor:default;">
           <span>Instagram</span>
-          <span class="pill">@ton_insta</span>
+          <span class="pill">@ibra.sn0</span>
         </div>
       </div>
 
       <div class="faqItem">
         <div class="faqQ" style="cursor:default;">
           <span>TikTok</span>
-          <span class="pill">@ton_tiktok</span>
+          <span class="pill">@ibrask0o</span>
         </div>
       </div>
 
       <div class="faqItem">
         <div class="faqQ" style="cursor:default;">
           <span>Snap</span>
-          <span class="pill">ton_snap</span>
+          <span class="pill">ibra.68o</span>
         </div>
       </div>
     </div>
