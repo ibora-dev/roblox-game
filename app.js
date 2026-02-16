@@ -1,12 +1,3 @@
-/* =========================
-   Roblox Picks — app.js
-   - Navigation via hash (#home, #categories, #cat/<key>, #faq, #contact)
-   - Cartes cliquables (ouvre Roblox)
-   - Recherche + filtres
-   ========================= */
-
-// ---------- DATA (à modifier) ----------
-
 const CATEGORIES = [
   { key: "horror", label: "Horreur 😱" },
   { key: "anomaly", label: "Anomalie 👁️" },
@@ -69,120 +60,120 @@ const GAMES = [
   },
   {
     title: "3008 [2,74]",
-    likes: "91%", // ou "1.2M likes"
-    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    likes: "91%", 
+    category: "fun", 
     url: "https://www.roblox.com/fr/games/2768379856/3008",
     image: "https://tr.rbxcdn.com/180DAY-a9306698a282e638a1688f1ca428a834/768/432/Image/Webp/noFilter",
     tag: "Fun"
   },
   {
     title: "Radiant Résidents",
-    likes: "90%", // ou "1.2M likes"
-    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    likes: "90%", 
+    category: "fun",
     url: "https://www.roblox.com/fr/games/13950108612/Radiant-Residents",
     image: "https://tr.rbxcdn.com/180DAY-576938d70d30db783cfd16d025b4e222/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "Roblox Party",
-    likes: "79%", // ou "1.2M likes"
-    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    likes: "79%",
+    category: "fun", 
     url: "https://www.roblox.com/fr/games/5948706234/Roblox-Party",
     image: "https://tr.rbxcdn.com/180DAY-3cbc1f355703861f36373ea3c8cf09e2/768/432/Image/Webp/noFilter",
     tag: "Fun"
   },
   {
     title: "Dog Walk",
-    likes: "54%", // ou "1.2M likes"
-    category: "obby", // horror/anomaly/fun/hobby/brainrot
+    likes: "54%",
+    category: "obby",
     url: "https://www.roblox.com/fr/games/99758842280353/Dog-Walk",
     image: "https://tr.rbxcdn.com/180DAY-514f9a4da5d25179fb1d57b1ad04b3d7/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "Chained Together",
-    likes: "73%", // ou "1.2M likes"
-    category: "obby", // horror/anomaly/fun/hobby/brainrot
+    likes: "73%",
+    category: "obby", 
     url: "https://www.roblox.com/fr/games/18152595062/Chained-Together",
     image: "https://tr.rbxcdn.com/180DAY-f55582ddfa7a6b22e68d7abbe0e69702/768/432/Image/Webp/noFilter",
     tag: "Hard"
   },
   {
     title: "Kick The Baby",
-    likes: "96%", // ou "1.2M likes"
-    category: "obby", // horror/anomaly/fun/hobby/brainrot
+    likes: "96%", 
+    category: "obby", 
     url: "https://www.roblox.com/fr/games/116623319969839/Kick-The-Baby",
     image: "https://tr.rbxcdn.com/180DAY-42f09e4e3851baa2f112eec914f6f0fc/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "The Mimic",
-    likes: "89%", // ou "1.2M likes"
-    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    likes: "89%",
+    category: "horror",
     url: "https://www.roblox.com/fr/games/6243699076/The-Mimic",
     image: "https://tr.rbxcdn.com/180DAY-72251cddd9eb5989ae109763db29ff79/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "Lost Rooms",
-    likes: "89%", // ou "1.2M likes"
-    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    likes: "89%", 
+    category: "horror", 
     url: "https://www.roblox.com/fr/games/117864491234172/LOST-ROOMS",
     image: "https://tr.rbxcdn.com/180DAY-0d60eb3a46c5f8c9e82b3a6731a322e5/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "Dollhouse Bloodshed",
-    likes: "83%", // ou "1.2M likes"
-    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    likes: "83%", 
+    category: "horror", 
     url: "https://www.roblox.com/fr/games/139506293848703/Dollhouse-Bloodshed",
     image: "https://tr.rbxcdn.com/180DAY-3010e6e90b42fcb61992fabb70aa350c/768/432/Image/Webp/noFilter",
     tag: "Hard"
   },
   {
     title: "The Exit 8",
-    likes: "78%", // ou "1.2M likes"
-    category: "anomaly", // horror/anomaly/fun/hobby/brainrot
+    likes: "78%", 
+    category: "anomaly",
     url: "https://www.roblox.com/fr/games/16894230496/The-Exit-8",
     image: "https://tr.rbxcdn.com/180DAY-cd875592b71d1f95592e7b3a0adeccfa/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "A Dusty Trip",
-    likes: "90%", // ou "1.2M likes"
-    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    likes: "90%", 
+    category: "fun", 
     url: "https://www.roblox.com/fr/games/16389395869/a-dusty-trip",
     image: "https://tr.rbxcdn.com/180DAY-c694bf0f9255a7abc8a049f755cd8889/768/432/Image/Webp/noFilter",
     tag: "Fun"
   },
   {
     title: "LOCOfficial",
-    likes: "87%", // ou "1.2M likes"
-    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    likes: "87%",
+    category: "fun",
     url: "https://www.roblox.com/fr/games/8571687919/LOCOfficial",
     image: "https://tr.rbxcdn.com/180DAY-fbf6ce340d9545ec9b1791c8204ba9c2/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "Stop!",
-    likes: "79%", // ou "1.2M likes"
-    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    likes: "79%", 
+    category: "fun", 
     url: "https://www.roblox.com/fr/games/98666334819917/Stop",
     image: "https://tr.rbxcdn.com/180DAY-415a71870778ffb0ed332731470d4193/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "Regretevator",
-    likes: "89%", // ou "1.2M likes"
-    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    likes: "89%", 
+    category: "fun", 
     url: "https://www.roblox.com/fr/games/4972273297/Regretevator",
     image: "https://tr.rbxcdn.com/180DAY-d361d80cb90a0f32fecb4138fcf6f224/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
     title: "Amber Alert",
-    likes: "91%", // ou "1.2M likes"
-    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    likes: "91%",
+    category: "horror", 
     url: "https://www.roblox.com/fr/games/108730407897379/Amber-Alert",
     image: "https://tr.rbxcdn.com/180DAY-12b337ced1735bd09b3e62ef08c27002/768/432/Image/Webp/noFilter",
     tag: "Tendance"
@@ -212,15 +203,11 @@ const FAQ = [
   },
 ];
 
-// ---------- APP STATE ----------
-
 const state = {
-  route: "home",     // home | categories | category | faq | contact
-  category: null,    // category key
+  route: "home",    
+  category: null,    
   query: "",
 };
-
-// ---------- DOM HELPERS ----------
 
 function $(id) {
   return document.getElementById(id);
@@ -247,11 +234,8 @@ function escapeHtml(s) {
 }
 
 function escapeAttr(s) {
-  // pour style="background-image:url('...')" (évite de casser avec ')
   return String(s).replaceAll("'", "%27");
 }
-
-// ---------- ROUTING ----------
 
 function parseHash() {
   const raw = (location.hash || "#home").replace("#", "");
@@ -287,7 +271,6 @@ function parseHash() {
     return;
   }
 
-  // fallback
   state.route = "home";
   state.category = null;
 }
@@ -306,8 +289,6 @@ function setActiveNav() {
   if (id && $(id)) $(id).classList.add("active");
 }
 
-// ---------- UI: CHIPS ----------
-
 function makeChip(text, onClick, active = false) {
   const b = document.createElement("button");
   b.type = "button";
@@ -318,9 +299,6 @@ function makeChip(text, onClick, active = false) {
 }
 
 function renderChips(mode) {
-  // mode: "home" => filtres
-  // mode: "categories" => navigation vers catégories
-  // mode: "category" => bouton retour + label
   els.chipRow.innerHTML = "";
 
   if (!mode) return;
@@ -368,8 +346,6 @@ function renderChips(mode) {
     }
   }
 }
-
-// ---------- UI: GAME CARDS ----------
 
 function gameCard(g) {
   const card = document.createElement("article");
@@ -443,8 +419,6 @@ function renderGamesGrid() {
   filtered.forEach(g => grid.appendChild(gameCard(g)));
   els.content.appendChild(grid);
 }
-
-// ---------- UI: FAQ & CONTACT ----------
 
 function renderFAQ() {
   els.statCount.textContent = "—";
@@ -521,13 +495,10 @@ function renderContact() {
   els.content.appendChild(box);
 }
 
-// ---------- RENDER ----------
-
 function render() {
   setActiveNav();
   els.content.innerHTML = "";
 
-  // search visible tout le temps, mais on adapte son usage selon page
   els.search.value = state.query;
 
   if (state.route === "home") {
@@ -580,31 +551,24 @@ function render() {
   }
 }
 
-// ---------- EVENTS ----------
-
 function init() {
-  // Year
   els.year.textContent = String(new Date().getFullYear());
 
-  // Home logo click
   els.goHome.addEventListener("click", () => { location.hash = "#home"; });
   els.goHome.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") location.hash = "#home";
   });
 
-  // Search
   els.search.addEventListener("input", () => {
     state.query = els.search.value;
     render();
   });
 
-  // Hash route
   window.addEventListener("hashchange", () => {
     parseHash();
     render();
   });
 
-  // First load
   if (!location.hash) location.hash = "#home";
   parseHash();
   render();
