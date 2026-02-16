@@ -33,23 +33,23 @@ const GAMES = [
     category: "horror",
     url: "https://www.roblox.com/fr/games/101048237707399/Floors-Have-Teeth",
     image: "https://tr.rbxcdn.com/180DAY-fd6c50153edce70ae4384915c6ae8b3a/768/432/Image/Webp/noFilter",
-    tag: "Tendance",
+    tag: "Tendance", "Horreur"
   },
   {
-    title: "Exemple: Anomaly Zone",
-    likes: "88%",
-    category: "anomaly",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Anomaly+Zone",
-    tag: "Bizarre",
+    title: "Iscariot",
+    likes: "86%",
+    category: "horror",
+    url: "https://www.roblox.com/fr/games/13722812741/Iscariot",
+    image: "https://tr.rbxcdn.com/180DAY-39b5cbc6d29040f380c4211aeaf202af/768/432/Image/Webp/noFilter",
+    tag: "Bizarre", "Horreur"
   },
   {
-    title: "Exemple: Fun Chaos",
-    likes: "95%",
-    category: "fun",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Fun+Chaos",
-    tag: "Populaire",
+    title: "The Curse [PART 3]",
+    likes: "79%",
+    category: "horror",
+    url: "https://www.roblox.com/fr/games/15077422637/The-Curse",
+    image: "https://tr.rbxcdn.com/180DAY-e64dabe94751ab68a52c5a46b031717d/768/432/Image/Webp/noFilter",
+    tag: "Populaire", "Horreur"
   },
   {
     title: "Exemple: Build & Chill",
