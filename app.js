@@ -1,6 +1,11 @@
-// ============ DATA (Tu modifies ça quand tu veux) ============
-// Astuce : remplace les "url" par les liens Roblox officiels des jeux.
-// images: mets une image (png/jpg) ou laisse le placeholder, tu changeras après.
+/* =========================
+   Roblox Picks — app.js
+   - Navigation via hash (#home, #categories, #cat/<key>, #faq, #contact)
+   - Cartes cliquables (ouvre Roblox)
+   - Recherche + filtres
+   ========================= */
+
+// ---------- DATA (à modifier) ----------
 
 const CATEGORIES = [
   { key: "horror", label: "Horreur 😱" },
@@ -10,8 +15,18 @@ const CATEGORIES = [
   { key: "brainrot", label: "Brain rot 🧠💥" },
 ];
 
+/*
+  Pour ajouter un jeu :
+  {
+    title: "Nom du jeu",
+    likes: "92%", // ou "1.2M likes"
+    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/games/ID/...",
+    image: "https://...jpg",
+    tag: "Tendance"
+  }
+*/
 const GAMES = [
-  // Recommandations (home) — tu peux mélanger les catégories ici
   {
     title: "Exemple: Horror Game",
     likes: "92%",
@@ -52,8 +67,7 @@ const GAMES = [
     image: "https://placehold.co/900x540/png?text=Brainrot+Sim",
     tag: "💀",
   },
-
-  // Quelques jeux en plus pour montrer le scroll
+  // + jeux pour scroll
   {
     title: "Exemple: Night Corridor",
     likes: "90%",
@@ -99,36 +113,97 @@ const GAMES = [
 const FAQ = [
   {
     q: "Comment vous choisissez les jeux ?",
-    a: "On met surtout des jeux fun, populaires, et des trucs plus niche selon les catégories (horreur, anomalie, etc.). Tu pourras modifier cette FAQ quand tu veux.",
+    a: "On met surtout des jeux fun, populaires, et des trucs plus niche selon les catégories (horreur, anomalie, etc.). Tu peux modifier cette FAQ quand tu veux.",
   },
   {
-    q: "Je clique et ça fait quoi ?",
-    a: "Quand tu cliques sur une carte, ça ouvre la page Roblox du jeu dans un nouvel onglet.",
+    q: "Quand je clique sur un jeu, ça fait quoi ?",
+    a: "Ça ouvre la page Roblox du jeu dans un nouvel onglet.",
   },
   {
     q: "Je peux proposer un jeu ?",
-    a: "Oui ! Ajoute tes réseaux dans Contact, ou crée un formulaire plus tard (Google Forms par exemple).",
+    a: "Oui. Mets tes réseaux dans Contact (Discord / Insta) ou ajoute un Google Form plus tard.",
   },
 ];
 
-// ============ APP ============
+// ---------- APP STATE ----------
 
-const els = {
-  content: document.getElementById("content"),
-  pageTitle: document.getElementById("pageTitle"),
-  pageSubtitle: document.getElementById("pageSubtitle"),
-  chipRow: document.getElementById("chipRow"),
-  search: document.getElementById("search"),
-  statCount: document.getElementById("statCount"),
-  year: document.getElementById("year"),
-  goHome: document.getElementById("goHome"),
-};
-
-let state = {
+const state = {
   route: "home",     // home | categories | category | faq | contact
-  category: null,    // key
+  category: null,    // category key
   query: "",
 };
+
+// ---------- DOM HELPERS ----------
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+const els = {
+  content: $("content"),
+  pageTitle: $("pageTitle"),
+  pageSubtitle: $("pageSubtitle"),
+  chipRow: $("chipRow"),
+  search: $("search"),
+  statCount: $("statCount"),
+  year: $("year"),
+  goHome: $("goHome"),
+};
+
+function escapeHtml(s) {
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function escapeAttr(s) {
+  // pour style="background-image:url('...')" (évite de casser avec ')
+  return String(s).replaceAll("'", "%27");
+}
+
+// ---------- ROUTING ----------
+
+function parseHash() {
+  const raw = (location.hash || "#home").replace("#", "");
+  const [base, param] = raw.split("/");
+
+  if (base === "home") {
+    state.route = "home";
+    state.category = null;
+    return;
+  }
+
+  if (base === "categories") {
+    state.route = "categories";
+    state.category = null;
+    return;
+  }
+
+  if (base === "cat" && param) {
+    state.route = "category";
+    state.category = param;
+    return;
+  }
+
+  if (base === "faq") {
+    state.route = "faq";
+    state.category = null;
+    return;
+  }
+
+  if (base === "contact") {
+    state.route = "contact";
+    state.category = null;
+    return;
+  }
+
+  // fallback
+  state.route = "home";
+  state.category = null;
+}
 
 function setActiveNav() {
   const map = {
@@ -138,50 +213,45 @@ function setActiveNav() {
     faq: "nav-faq",
     contact: "nav-contact",
   };
+
   document.querySelectorAll(".navlink").forEach(a => a.classList.remove("active"));
   const id = map[state.route];
-  if (id) document.getElementById(id).classList.add("active");
+  if (id && $(id)) $(id).classList.add("active");
 }
 
-function navigateFromHash() {
-  const hash = (location.hash || "#home").replace("#", "");
-  const [base, param] = hash.split("/");
+// ---------- UI: CHIPS ----------
 
-  if (base === "home") {
-    state.route = "home";
-    state.category = null;
-  } else if (base === "categories") {
-    state.route = "categories";
-    state.category = null;
-  } else if (base === "cat" && param) {
-    state.route = "category";
-    state.category = param;
-  } else if (base === "faq") {
-    state.route = "faq";
-    state.category = null;
-  } else if (base === "contact") {
-    state.route = "contact";
-    state.category = null;
-  } else {
-    state.route = "home";
-    state.category = null;
-  }
-
-  render();
+function makeChip(text, onClick, active = false) {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "chip" + (active ? " active" : "");
+  b.textContent = text;
+  b.addEventListener("click", onClick);
+  return b;
 }
 
 function renderChips(mode) {
-  // mode: "home" -> puces filtre (toutes catégories)
-  // mode: "categories" -> puces navigation vers catégorie
+  // mode: "home" => filtres
+  // mode: "categories" => navigation vers catégories
+  // mode: "category" => bouton retour + label
   els.chipRow.innerHTML = "";
 
+  if (!mode) return;
+
   if (mode === "home") {
-    const allChip = chip("Tout ⭐", () => { state.category = null; render(); }, state.category === null);
-    els.chipRow.appendChild(allChip);
+    els.chipRow.appendChild(
+      makeChip("Tout ⭐", () => {
+        state.category = null;
+        render();
+      }, state.category === null)
+    );
 
     CATEGORIES.forEach(c => {
       els.chipRow.appendChild(
-        chip(c.label, () => { state.category = c.key; render(); }, state.category === c.key)
+        makeChip(c.label, () => {
+          state.category = c.key;
+          render();
+        }, state.category === c.key)
       );
     });
   }
@@ -189,68 +259,30 @@ function renderChips(mode) {
   if (mode === "categories") {
     CATEGORIES.forEach(c => {
       els.chipRow.appendChild(
-        chip(c.label, () => { location.hash = `#cat/${c.key}`; }, false)
+        makeChip(c.label, () => {
+          location.hash = `#cat/${c.key}`;
+        }, false)
       );
     });
   }
 
   if (mode === "category") {
-    const back = chip("⬅ Retour catégories", () => { location.hash = "#categories"; }, false);
-    els.chipRow.appendChild(back);
+    els.chipRow.appendChild(
+      makeChip("⬅ Retour catégories", () => {
+        location.hash = "#categories";
+      }, false)
+    );
 
     const current = CATEGORIES.find(x => x.key === state.category);
     if (current) {
-      els.chipRow.appendChild(chip(`Filtre: ${current.label}`, () => {}, true));
+      els.chipRow.appendChild(
+        makeChip(`Filtre: ${current.label}`, () => {}, true)
+      );
     }
   }
 }
 
-function chip(text, onClick, active) {
-  const b = document.createElement("button");
-  b.className = "chip" + (active ? " active" : "");
-  b.type = "button";
-  b.textContent = text;
-  b.addEventListener("click", onClick);
-  return b;
-}
-
-function renderGamesList(games) {
-  const q = state.query.trim().toLowerCase();
-  let filtered = games;
-
-  if (state.route === "home" && state.category) {
-    filtered = filtered.filter(g => g.category === state.category);
-  }
-  if (state.route === "category" && state.category) {
-    filtered = filtered.filter(g => g.category === state.category);
-  }
-  if (q) {
-    filtered = filtered.filter(g => g.title.toLowerCase().includes(q));
-  }
-
-  els.statCount.textContent = String(filtered.length);
-
-  const grid = document.createElement("div");
-  grid.className = "grid";
-
-  filtered.forEach(g => {
-    grid.appendChild(gameCard(g));
-  });
-
-  // Si aucun résultat
-  if (filtered.length === 0) {
-    const empty = document.createElement("div");
-    empty.className = "sectionCard";
-    empty.innerHTML = `
-      <h3 class="sectionTitle">Aucun résultat 😅</h3>
-      <p class="small">Essaie un autre mot dans la recherche, ou enlève un filtre.</p>
-    `;
-    els.content.appendChild(empty);
-    return;
-  }
-
-  els.content.appendChild(grid);
-}
+// ---------- UI: GAME CARDS ----------
 
 function gameCard(g) {
   const card = document.createElement("article");
@@ -259,7 +291,7 @@ function gameCard(g) {
   card.setAttribute("tabindex", "0");
   card.title = "Ouvrir sur Roblox";
 
-  const catLabel = (CATEGORIES.find(c => c.key === g.category)?.label) || g.category;
+  const catLabel = CATEGORIES.find(c => c.key === g.category)?.label || g.category;
 
   card.innerHTML = `
     <div class="thumb" style="background-image:url('${escapeAttr(g.image)}')">
@@ -285,8 +317,51 @@ function gameCard(g) {
   return card;
 }
 
+function getFilteredGames() {
+  let list = [...GAMES];
+  const q = state.query.trim().toLowerCase();
+
+  if (state.route === "home" && state.category) {
+    list = list.filter(g => g.category === state.category);
+  }
+
+  if (state.route === "category" && state.category) {
+    list = list.filter(g => g.category === state.category);
+  }
+
+  if (q) {
+    list = list.filter(g => g.title.toLowerCase().includes(q));
+  }
+
+  return list;
+}
+
+function renderGamesGrid() {
+  const filtered = getFilteredGames();
+  els.statCount.textContent = String(filtered.length);
+
+  if (filtered.length === 0) {
+    const empty = document.createElement("div");
+    empty.className = "sectionCard";
+    empty.innerHTML = `
+      <h3 class="sectionTitle">Aucun résultat 😅</h3>
+      <p class="small">Essaie un autre mot dans la recherche, ou enlève un filtre.</p>
+    `;
+    els.content.appendChild(empty);
+    return;
+  }
+
+  const grid = document.createElement("div");
+  grid.className = "grid";
+  filtered.forEach(g => grid.appendChild(gameCard(g)));
+  els.content.appendChild(grid);
+}
+
+// ---------- UI: FAQ & CONTACT ----------
+
 function renderFAQ() {
   els.statCount.textContent = "—";
+
   const box = document.createElement("div");
   box.className = "sectionCard";
   box.innerHTML = `
@@ -297,6 +372,7 @@ function renderFAQ() {
   FAQ.forEach(item => {
     const wrap = document.createElement("div");
     wrap.className = "faqItem";
+
     wrap.innerHTML = `
       <div class="faqQ">
         <span>${escapeHtml(item.q)}</span>
@@ -304,9 +380,11 @@ function renderFAQ() {
       </div>
       <div class="faqA">${escapeHtml(item.a)}</div>
     `;
+
     wrap.querySelector(".faqQ").addEventListener("click", () => {
       wrap.classList.toggle("open");
     });
+
     box.appendChild(wrap);
   });
 
@@ -315,11 +393,12 @@ function renderFAQ() {
 
 function renderContact() {
   els.statCount.textContent = "—";
+
   const box = document.createElement("div");
   box.className = "sectionCard";
   box.innerHTML = `
     <h3 class="sectionTitle">Contact</h3>
-    <p class="small">Mets tes liens ici (tu les changeras quand tu veux).</p>
+    <p class="small">Remplace ces infos par les tiennes (Discord, Insta, TikTok, Snap…).</p>
 
     <div style="margin-top:12px; display:grid; gap:10px;">
       <div class="faqItem">
@@ -351,23 +430,25 @@ function renderContact() {
       </div>
     </div>
   `;
+
   els.content.appendChild(box);
 }
 
+// ---------- RENDER ----------
+
 function render() {
   setActiveNav();
-
-  // reset content
   els.content.innerHTML = "";
 
-  // Search always visible, but we can adapt placeholder
+  // search visible tout le temps, mais on adapte son usage selon page
   els.search.value = state.query;
 
   if (state.route === "home") {
     els.pageTitle.textContent = "Recommandations";
     els.pageSubtitle.textContent = "Scroll et découvre des jeux Roblox 👇";
     renderChips("home");
-    renderGamesList(GAMES);
+    renderGamesGrid();
+    return;
   }
 
   if (state.route === "categories") {
@@ -376,13 +457,14 @@ function render() {
     renderChips("categories");
 
     els.statCount.textContent = "—";
-    const box = document.createElement("div");
-    box.className = "sectionCard";
-    box.innerHTML = `
+    const info = document.createElement("div");
+    info.className = "sectionCard";
+    info.innerHTML = `
       <h3 class="sectionTitle">Choisis une catégorie</h3>
       <p class="small">Clique sur une puce au-dessus (Horreur, Anomalie, Fun, Hobby, Brain rot).</p>
     `;
-    els.content.appendChild(box);
+    els.content.appendChild(info);
+    return;
   }
 
   if (state.route === "category") {
@@ -390,7 +472,8 @@ function render() {
     els.pageTitle.textContent = current ? current.label : "Catégorie";
     els.pageSubtitle.textContent = "Scroll et clique un jeu pour l’ouvrir sur Roblox ✨";
     renderChips("category");
-    renderGamesList(GAMES);
+    renderGamesGrid();
+    return;
   }
 
   if (state.route === "faq") {
@@ -398,6 +481,7 @@ function render() {
     els.pageSubtitle.textContent = "Questions / réponses — tu modifies ça quand tu veux 🧠";
     renderChips(null);
     renderFAQ();
+    return;
   }
 
   if (state.route === "contact") {
@@ -405,40 +489,38 @@ function render() {
     els.pageSubtitle.textContent = "Tes réseaux (Discord, Insta, TikTok…) 📩";
     renderChips(null);
     renderContact();
+    return;
   }
 }
 
-// ============ Utils ============
+// ---------- EVENTS ----------
 
-function escapeHtml(s){
-  return String(s)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-}
-function escapeAttr(s){
-  // pour éviter de casser le style="url('...')"
-  return String(s).replaceAll("'", "%27");
-}
+function init() {
+  // Year
+  els.year.textContent = String(new Date().getFullYear());
 
-// ============ Events ============
+  // Home logo click
+  els.goHome.addEventListener("click", () => { location.hash = "#home"; });
+  els.goHome.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") location.hash = "#home";
+  });
 
-window.addEventListener("hashchange", navigateFromHash);
+  // Search
+  els.search.addEventListener("input", () => {
+    state.query = els.search.value;
+    render();
+  });
 
-els.search.addEventListener("input", () => {
-  state.query = els.search.value;
+  // Hash route
+  window.addEventListener("hashchange", () => {
+    parseHash();
+    render();
+  });
+
+  // First load
+  if (!location.hash) location.hash = "#home";
+  parseHash();
   render();
-});
+}
 
-els.goHome.addEventListener("click", () => { location.hash = "#home"; });
-els.goHome.addEventListener("keydown", (e) => {
-  if (e.key === "Enter" || e.key === " ") location.hash = "#home";
-});
-
-document.getElementById("year").textContent = String(new Date().getFullYear());
-
-// init
-if (!location.hash) location.hash = "#home";
-navigateFromHash();
+document.addEventListener("DOMContentLoaded", init);
