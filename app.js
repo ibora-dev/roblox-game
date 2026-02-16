@@ -565,7 +565,7 @@ function render() {
 
   if (state.route === "faq") {
     els.pageTitle.textContent = "FAQ";
-    els.pageSubtitle.textContent = "Questions / réponses — tu modifies ça quand tu veux 🧠";
+    els.pageSubtitle.textContent = "Questions / réponses";
     renderChips(null);
     renderFAQ();
     return;
@@ -573,7 +573,7 @@ function render() {
 
   if (state.route === "contact") {
     els.pageTitle.textContent = "Contact";
-    els.pageSubtitle.textContent = "Tes réseaux (Discord, Insta, TikTok…) 📩";
+    els.pageSubtitle.textContent = "Mes réseaux 📩";
     renderChips(null);
     renderContact();
     return;
