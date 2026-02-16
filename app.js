@@ -33,7 +33,7 @@ const GAMES = [
     category: "horror",
     url: "https://www.roblox.com/fr/games/101048237707399/Floors-Have-Teeth",
     image: "https://tr.rbxcdn.com/180DAY-fd6c50153edce70ae4384915c6ae8b3a/768/432/Image/Webp/noFilter",
-    tag: "Tendance", "Horreur"
+    tag: "Tendance",
   },
   {
     title: "Iscariot",
@@ -41,7 +41,7 @@ const GAMES = [
     category: "horror",
     url: "https://www.roblox.com/fr/games/13722812741/Iscariot",
     image: "https://tr.rbxcdn.com/180DAY-39b5cbc6d29040f380c4211aeaf202af/768/432/Image/Webp/noFilter",
-    tag: "Bizarre", "Horreur"
+    tag: "Bizarre",
   },
   {
     title: "The Curse [PART 3]",
@@ -49,7 +49,7 @@ const GAMES = [
     category: "horror",
     url: "https://www.roblox.com/fr/games/15077422637/The-Curse",
     image: "https://tr.rbxcdn.com/180DAY-e64dabe94751ab68a52c5a46b031717d/768/432/Image/Webp/noFilter",
-    tag: "Populaire", "Horreur"
+    tag: "Populaire",
   },
   {
     title: "Exemple: Build & Chill",
