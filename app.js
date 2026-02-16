@@ -194,7 +194,7 @@ const GAMES = [
     url: "https://www.roblox.com/fr/games/126293024094985/Terminal-13-Not-Human",
     image: "https://tr.rbxcdn.com/180DAY-43b93cd5b0e1852e065cfa20988e1eb3/768/432/Image/Webp/noFilter",
     tag: "Anomaly",
-  };
+  ];
 
 const FAQ = [
   {
