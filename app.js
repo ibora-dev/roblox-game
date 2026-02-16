@@ -24,7 +24,7 @@ const CATEGORIES = [
     url: "https://www.roblox.com/games/ID/...",
     image: "https://...jpg",
     tag: "Tendance"
-  }
+  },
 */
 const GAMES = [
   {
@@ -116,19 +116,75 @@ const GAMES = [
     tag: "Tendance"
   },
   {
-    title: "Nom du jeu",
-    likes: "92%", // ou "1.2M likes"
+    title: "The Mimic",
+    likes: "89%", // ou "1.2M likes"
     category: "horror", // horror/anomaly/fun/hobby/brainrot
-    url: "https://www.roblox.com/games/ID/...",
-    image: "https://...jpg",
+    url: "https://www.roblox.com/fr/games/6243699076/The-Mimic",
+    image: "https://tr.rbxcdn.com/180DAY-72251cddd9eb5989ae109763db29ff79/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
-    title: "Nom du jeu",
-    likes: "92%", // ou "1.2M likes"
+    title: "Lost Rooms",
+    likes: "89%", // ou "1.2M likes"
     category: "horror", // horror/anomaly/fun/hobby/brainrot
-    url: "https://www.roblox.com/games/ID/...",
-    image: "https://...jpg",
+    url: "https://www.roblox.com/fr/games/117864491234172/LOST-ROOMS",
+    image: "https://tr.rbxcdn.com/180DAY-0d60eb3a46c5f8c9e82b3a6731a322e5/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
+  },
+  {
+    title: "Dollhouse Bloodshed",
+    likes: "83%", // ou "1.2M likes"
+    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/139506293848703/Dollhouse-Bloodshed",
+    image: "https://tr.rbxcdn.com/180DAY-3010e6e90b42fcb61992fabb70aa350c/768/432/Image/Webp/noFilter",
+    tag: "Hard"
+  },
+  {
+    title: "The Exit 8",
+    likes: "78%", // ou "1.2M likes"
+    category: "anomaly", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/16894230496/The-Exit-8",
+    image: "https://tr.rbxcdn.com/180DAY-cd875592b71d1f95592e7b3a0adeccfa/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
+  },
+  {
+    title: "A Dusty Trip",
+    likes: "90%", // ou "1.2M likes"
+    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/16389395869/a-dusty-trip",
+    image: "https://tr.rbxcdn.com/180DAY-c694bf0f9255a7abc8a049f755cd8889/768/432/Image/Webp/noFilter",
+    tag: "Fun"
+  },
+  {
+    title: "LOCOfficial",
+    likes: "87%", // ou "1.2M likes"
+    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/8571687919/LOCOfficial",
+    image: "https://tr.rbxcdn.com/180DAY-fbf6ce340d9545ec9b1791c8204ba9c2/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
+  },
+  {
+    title: "Stop!",
+    likes: "79%", // ou "1.2M likes"
+    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/98666334819917/Stop",
+    image: "https://tr.rbxcdn.com/180DAY-415a71870778ffb0ed332731470d4193/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
+  },
+  {
+    title: "Regretevator",
+    likes: "89%", // ou "1.2M likes"
+    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/4972273297/Regretevator",
+    image: "https://tr.rbxcdn.com/180DAY-d361d80cb90a0f32fecb4138fcf6f224/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
+  },
+  {
+    title: "Amber Alert",
+    likes: "91%", // ou "1.2M likes"
+    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/108730407897379/Amber-Alert",
+    image: "https://tr.rbxcdn.com/180DAY-12b337ced1735bd09b3e62ef08c27002/768/432/Image/Webp/noFilter",
     tag: "Tendance"
   },
   {
