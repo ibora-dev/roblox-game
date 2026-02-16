@@ -52,76 +52,106 @@ const GAMES = [
     tag: "Populaire",
   },
   {
-    title: "Exemple: Build & Chill",
-    likes: "86%",
-    category: "hobby",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Build+%26+Chill",
-    tag: "Relax",
-  },
-  {
-    title: "Exemple: Brainrot Simulator",
-    likes: "79%",
-    category: "brainrot",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Brainrot+Sim",
-    tag: "💀",
-  },
-  // + jeux pour scroll
-  {
-    title: "Exemple: Night Corridor",
-    likes: "90%",
-    category: "horror",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Night+Corridor",
-    tag: "Horreur",
-  },
-  {
-    title: "Exemple: The Glitch Room",
-    likes: "84%",
+    title: "Corridor",
+    likes: "92%",
     category: "anomaly",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=The+Glitch+Room",
-    tag: "Anomalie",
+    url: "https://www.roblox.com/fr/games/16825633506/Corridor",
+    image: "https://tr.rbxcdn.com/180DAY-236aea5f4bea7f05156350d83f61f649/768/432/Image/Webp/noFilter",
+    tag: "Anomaly",
   },
   {
-    title: "Exemple: Funny Obby",
-    likes: "93%",
-    category: "fun",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Funny+Obby",
-    tag: "Obby",
+    title: "Scary Shawarma Kiosk the ANOMALY",
+    likes: "90%",
+    category: "anomaly",
+    url: "https://www.roblox.com/fr/games/137826330724902/Scary-Shawarma-Kiosk-the-ANOMALY",
+    image: "https://tr.rbxcdn.com/180DAY-609e27e2e0cbe8f3b5e892357f5934b6/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
   },
   {
-    title: "Exemple: Cooking Time",
-    likes: "85%",
-    category: "hobby",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Cooking+Time",
-    tag: "Hobby",
+    title: "3008 [2,74]",
+    likes: "91%", // ou "1.2M likes"
+    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/2768379856/3008",
+    image: "https://tr.rbxcdn.com/180DAY-a9306698a282e638a1688f1ca428a834/768/432/Image/Webp/noFilter",
+    tag: "Fun"
   },
   {
-    title: "Exemple: Meme World",
-    likes: "81%",
-    category: "brainrot",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Meme+World",
-    tag: "Mèmes",
+    title: "Radiant Résidents",
+    likes: "90%", // ou "1.2M likes"
+    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/13950108612/Radiant-Residents",
+    image: "https://tr.rbxcdn.com/180DAY-576938d70d30db783cfd16d025b4e222/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
   },
-];
+  {
+    title: "Roblox Party",
+    likes: "79%", // ou "1.2M likes"
+    category: "fun", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/5948706234/Roblox-Party",
+    image: "https://tr.rbxcdn.com/180DAY-3cbc1f355703861f36373ea3c8cf09e2/768/432/Image/Webp/noFilter",
+    tag: "Fun"
+  },
+  {
+    title: "Dog Walk",
+    likes: "54%", // ou "1.2M likes"
+    category: "obby", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/99758842280353/Dog-Walk",
+    image: "https://tr.rbxcdn.com/180DAY-514f9a4da5d25179fb1d57b1ad04b3d7/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
+  },
+  {
+    title: "Chained Together",
+    likes: "73%", // ou "1.2M likes"
+    category: "obby", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/18152595062/Chained-Together",
+    image: "https://tr.rbxcdn.com/180DAY-f55582ddfa7a6b22e68d7abbe0e69702/768/432/Image/Webp/noFilter",
+    tag: "Hard"
+  },
+  {
+    title: "Kick The Baby",
+    likes: "96%", // ou "1.2M likes"
+    category: "obby", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/fr/games/116623319969839/Kick-The-Baby",
+    image: "https://tr.rbxcdn.com/180DAY-42f09e4e3851baa2f112eec914f6f0fc/768/432/Image/Webp/noFilter",
+    tag: "Tendance"
+  },
+  {
+    title: "Nom du jeu",
+    likes: "92%", // ou "1.2M likes"
+    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/games/ID/...",
+    image: "https://...jpg",
+    tag: "Tendance"
+  },
+  {
+    title: "Nom du jeu",
+    likes: "92%", // ou "1.2M likes"
+    category: "horror", // horror/anomaly/fun/hobby/brainrot
+    url: "https://www.roblox.com/games/ID/...",
+    image: "https://...jpg",
+    tag: "Tendance"
+  },
+  {
+    title: "Terminal 13 Not Human",
+    likes: "88%",
+    category: "anomaly",
+    url: "https://www.roblox.com/fr/games/126293024094985/Terminal-13-Not-Human",
+    image: "https://tr.rbxcdn.com/180DAY-43b93cd5b0e1852e065cfa20988e1eb3/768/432/Image/Webp/noFilter",
+    tag: "Anomaly",
+  };
 
 const FAQ = [
   {
-    q: "Comment vous choisissez les jeux ?",
-    a: "On met surtout des jeux fun, populaires, et des trucs plus niche selon les catégories (horreur, anomalie, etc.). Tu peux modifier cette FAQ quand tu veux.",
+    q: "Ibora est un garçon ou une fille ?",
+    a: "Je ne répondrai pas à cette question, non par pudeur, mais parce qu’aucune des propositions ne me convient : je ne me sens ni homme ni femme, je me sens stylé.",
   },
   {
-    q: "Quand je clique sur un jeu, ça fait quoi ?",
-    a: "Ça ouvre la page Roblox du jeu dans un nouvel onglet.",
+    q: "Ibora mangeait-il des vers de terre quand il était petit ?",
+    a: "Jamais de la vie. Déjà, t’as de la terre partout, et en plus ça a un goût de poisson moisi mélangé à de la boue… berk.",
   },
   {
-    q: "Je peux proposer un jeu ?",
-    a: "Oui. Mets tes réseaux dans Contact (Discord / Insta) ou ajoute un Google Form plus tard.",
+    q: "Ibora est-il charismatique ?",
+    a: "Oui. Un charisme naturel, accompagné d’une nonchalance assumée, d’humour, d’intelligence et d’une vraie présence.",
   },
 ];
 
