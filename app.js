@@ -11,7 +11,7 @@ const CATEGORIES = [
   { key: "horror", label: "Horreur 😱" },
   { key: "anomaly", label: "Anomalie 👁️" },
   { key: "fun", label: "Fun 😂" },
-  { key: "Obby", label: "Obby 🛠️" },
+  { key: "obby", label: "Obby 🛠️" },
   { key: "brainrot", label: "Brainrot 🧠" },
 ];
 
