@@ -3,15 +3,62 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mon site</title>
+  <title>Roblox Picks</title>
   <link rel="stylesheet" href="style.css" />
+  <meta name="theme-color" content="#0b1020">
 </head>
+
 <body>
-  <main class="card">
-    <h1>Salut 👋</h1>
-    <p>Mon site est en ligne gratuitement avec GitHub Pages.</p>
-    <a class="btn" href="https://github.com">Mon GitHub</a>
+  <header class="topbar">
+    <div class="brand" role="button" tabindex="0" id="goHome">
+      <div class="logo">R</div>
+      <div>
+        <div class="brand-title">Roblox Picks</div>
+        <div class="brand-sub">Jeux recommandés • catégories • fun</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a class="navlink" href="#home" id="nav-home">Accueil</a>
+      <a class="navlink" href="#categories" id="nav-categories">Catégories</a>
+      <a class="navlink" href="#faq" id="nav-faq">FAQ</a>
+      <a class="navlink" href="#contact" id="nav-contact">Contact</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div class="hero-left">
+        <h1 id="pageTitle">Recommandations</h1>
+        <p id="pageSubtitle" class="subtitle">
+          Scroll et découvre des jeux Roblox 👇
+        </p>
+
+        <div class="toolbar">
+          <input id="search" class="search" type="search" placeholder="Rechercher un jeu (nom)..." autocomplete="off" />
+          <div id="chipRow" class="chips"></div>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="statcard">
+          <div class="statnum" id="statCount">0</div>
+          <div class="statlabel">jeux affichés</div>
+        </div>
+        <div class="tipcard">
+          <div class="tiptitle">Astuce ⚡</div>
+          <div class="tiptext">Clique une carte → ouvre la page Roblox du jeu.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="content"></section>
   </main>
-  <script src="script.js"></script>
+
+  <footer class="footer">
+    <div>© <span id="year"></span> Roblox Picks • fait sur GitHub Pages 🚀</div>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 </html>
