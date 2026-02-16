@@ -11,8 +11,8 @@ const CATEGORIES = [
   { key: "horror", label: "Horreur 😱" },
   { key: "anomaly", label: "Anomalie 👁️" },
   { key: "fun", label: "Fun 😂" },
-  { key: "hobby", label: "Hobby 🛠️" },
-  { key: "brainrot", label: "Brain rot 🧠💥" },
+  { key: "Obby", label: "Obby 🛠️" },
+  { key: "brainrot", label: "Brainrot 🧠" },
 ];
 
 /*
@@ -28,11 +28,11 @@ const CATEGORIES = [
 */
 const GAMES = [
   {
-    title: "Exemple: Horror Game",
+    title: "Floors Have Teeth",
     likes: "92%",
     category: "horror",
-    url: "https://www.roblox.com/",
-    image: "https://placehold.co/900x540/png?text=Horror+Game",
+    url: "https://www.roblox.com/fr/games/101048237707399/Floors-Have-Teeth",
+    image: "https://tr.rbxcdn.com/180DAY-fd6c50153edce70ae4384915c6ae8b3a/768/432/Image/Webp/noFilter",
     tag: "Tendance",
   },
   {
